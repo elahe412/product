@@ -1,11 +1,12 @@
 from django.core.exceptions import ValidationError
 from common.messages import Messages
-from product_service.settings import FILE_UPLOAD_MAX_SIZE
+from product_service.settings import FILE_UPLOAD_MAX_SIZE, IMAGE_TYPES
 
-def validate_file_size(file):
-    filesize= file.size
-    
-    if filesize > FILE_UPLOAD_MAX_SIZE:
+def validate_image_file(file): 
+    print(file.size)
+    if file.content_type not in IMAGE_TYPES:
+        raise ValidationError(Messages.INVALID_IMAGE_FORMAT.value)
+    if file.size > FILE_UPLOAD_MAX_SIZE:
         raise ValidationError(Messages.FILE_MAX_SIZE_MESSAGE.value)
     else:
-        return file
+        return True
