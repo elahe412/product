@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-FILE_UPLOAD_MAX_SIZE = 5000000
+
 
 # Application definition
 
@@ -133,3 +133,5 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+FILE_UPLOAD_MAX_SIZE = 2000000
+IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/jpg','image/svg+xml']
